@@ -35,7 +35,6 @@ public class ServletUtils {
     public static JSONObject getJSONObject(HttpServletRequest request){
         BufferedReader reader = null;
         try {
-
             //解析接收的数据
             reader = request.getReader();
             String json = reader.readLine();
