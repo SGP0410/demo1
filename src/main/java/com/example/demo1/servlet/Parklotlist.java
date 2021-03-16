@@ -1,6 +1,7 @@
 package com.example.demo1.servlet;
 
 import com.example.demo1.dao.impl.BaseDao;
+import com.example.demo1.dao.impl.ParkingDaoImpl;
 import com.example.demo1.pojo.Parkinglists;
 import com.example.demo1.utils.ServletUtils;
 import org.json.JSONArray;
@@ -27,12 +28,9 @@ public class Parklotlist extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         ServletUtils.Setting(request,response);     //更改数据类型为utf-8
 
-        BaseDao baseDao = new BaseDao();
-
-        List<Parkinglists> lists = baseDao.queryForList(Parkinglists.class,"select * from parkinglists");
+        List<Parkinglists> lists = new ParkingDaoImpl().queryParking();
 
         JSONObject jsonObject = new JSONObject();
-        PrintWriter writer = response.getWriter();
 
         if (lists != null){
             jsonObject.put("total",lists.size()+"");
@@ -54,9 +52,11 @@ public class Parklotlist extends HttpServlet {
                 jsonArray.put(jsonObject1);
             }
             jsonObject.put("rows",jsonArray);
-            writer.write(jsonObject.toString());
+        }else {
+            jsonObject.put("msg","查询失败");
+            jsonObject.put("code","500");
         }
-
+        response.getWriter().write(jsonObject.toString());
     }
 
 
