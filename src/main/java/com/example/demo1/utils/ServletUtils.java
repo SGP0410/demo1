@@ -62,11 +62,11 @@ public class ServletUtils {
      * @param request
      * @return 返回图片的访问地址
      */
-    public static String getImageUrl(HttpServletRequest request){
-        return null;
+    public static String getImageUrl(HttpServletRequest request , String imageName){
+        StringBuffer requestURL = request.getRequestURL();
+        String servletPath = request.getServletPath();
+        int index = requestURL.indexOf(servletPath);
+        return requestURL.delete(index+1 , requestURL.length())+"image/"+imageName;
     }
-
-
-
 
 }
