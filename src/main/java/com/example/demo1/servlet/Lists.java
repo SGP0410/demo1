@@ -9,23 +9,25 @@ import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
-import java.util.LinkedHashMap;
 import java.util.List;
 
 @WebServlet(name = "lists", value = "/lists")
 public class Lists extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        JSONObject jsonObject = ServletUtils.Setting(request, response);
+        ServletUtils.Setting(request, response);
+
+        JSONObject jsonObject = ServletUtils.getJSONObject(request);
+
+                StringBuffer url = request.getRequestURL();
+
 
         System.out.println(request.getRequestURL());
 
         List<Slideshow> slideshowList = new SlideshowDaoImpl()
                 .querySlideshowByType(jsonObject.optString("type"));
 
-        LinkedHashMap lhm = new LinkedHashMap<>();
-
-        JSONObject jsonObject1 = new JSONObject(true);
+        JSONObject jsonObject1 = new JSONObject();
         if (slideshowList != null){
             jsonObject1.put("total",slideshowList.size());
             JSONArray jsonArray = new JSONArray();

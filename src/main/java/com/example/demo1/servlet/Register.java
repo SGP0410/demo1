@@ -18,7 +18,9 @@ public class Register extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        JSONObject jsonObject = ServletUtils.Setting(request, response);
+        ServletUtils.Setting(request, response);
+
+        JSONObject jsonObject = ServletUtils.getJSONObject(request);
 
         User user = new User(
                 jsonObject.optString("userName"),
