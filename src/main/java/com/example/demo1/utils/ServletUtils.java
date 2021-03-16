@@ -1,9 +1,6 @@
 package com.example.demo1.utils;
 
 
-
-
-
 import org.json.JSONObject;
 
 import javax.servlet.http.*;
@@ -38,6 +35,7 @@ public class ServletUtils {
     public static JSONObject getJSONObject(HttpServletRequest request){
         BufferedReader reader = null;
         try {
+
             //解析接收的数据
             reader = request.getReader();
             String json = reader.readLine();
@@ -65,8 +63,6 @@ public class ServletUtils {
     public static String getImageUrl(HttpServletRequest request){
         return null;
     }
-
-
 
 
 }
