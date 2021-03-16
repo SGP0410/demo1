@@ -13,6 +13,7 @@ import java.util.List;
 
 @WebServlet(name = "lists", value = "/lists")
 public class Lists extends HttpServlet {
+
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         ServletUtils.Setting(request, response);
@@ -26,7 +27,7 @@ public class Lists extends HttpServlet {
         if (slideshowList != null){
             jsonObject1.put("total",slideshowList.size());
             JSONArray jsonArray = new JSONArray();
-            for (Slideshow s:slideshowList) {
+            for (Slideshow s: slideshowList) {
                 JSONObject jsonObject2 = new JSONObject();
                 jsonObject2.put("id" , s.getId());
                 jsonObject2.put("imgUrl" , ServletUtils.getImageUrl(request , s.getImgUrl()));
@@ -38,7 +39,7 @@ public class Lists extends HttpServlet {
             jsonObject1.put("roes" , jsonArray);
             jsonObject1.put("code" , "200");
             jsonObject1.put("msg" , "查询成功");
-        }else {
+        } else {
             jsonObject1.put("code" , "500");
             jsonObject1.put("msg" , "查询失败");
         }

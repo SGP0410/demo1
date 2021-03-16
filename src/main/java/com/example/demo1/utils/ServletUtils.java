@@ -69,4 +69,7 @@ public class ServletUtils {
         return requestURL.delete(index+1 , requestURL.length())+"image/"+imageName;
     }
 
+
+
+
 }

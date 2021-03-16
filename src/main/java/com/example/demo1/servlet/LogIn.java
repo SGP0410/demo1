@@ -13,8 +13,9 @@ import javax.servlet.annotation.*;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-@WebServlet(name = "login", value = "/login")
+@WebServlet(name = "login", value = "/login")       //   {"userName":"zhangsan","password":"123"}
 public class LogIn extends HttpServlet {
+
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         super.doGet(request, response);
@@ -25,7 +26,6 @@ public class LogIn extends HttpServlet {
         ServletUtils.Setting(request, response);
 
         JSONObject jsonObject = ServletUtils.getJSONObject(request);
-
         //查询数据
         UserDaoImpl userDao = new UserDaoImpl();
         User user = userDao.queryUserByUserNameAndPassword(jsonObject.optString("userName"),
@@ -42,7 +42,6 @@ public class LogIn extends HttpServlet {
         }else {
             jsonObject1.put("msg" , "操作失败");
             jsonObject1.put("code" , "500");
-
         }
         writer.write(jsonObject1.toString());
     }
