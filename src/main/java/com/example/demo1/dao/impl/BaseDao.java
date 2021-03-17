@@ -39,6 +39,7 @@ public class BaseDao {
      * @param <T> 返回类型的泛型
      * @return
      */
+
     public <T> T queryForOne(Class<T> type , String sql , Object ... args){
         Connection connection = JdbcUtils.getConnection();
         try {

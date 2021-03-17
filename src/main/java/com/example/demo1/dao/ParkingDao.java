@@ -15,4 +15,11 @@ public interface ParkingDao {
      * @return
      */
     public List<Parkinglists> queryParking();
+
+    /**
+     * 通过Id获取一条停车场信息
+     * @param id
+     * @return
+     */
+    public Parkinglists queryParkingById(int id);
 }

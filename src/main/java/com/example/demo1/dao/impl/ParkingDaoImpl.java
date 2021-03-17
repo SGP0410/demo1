@@ -10,9 +10,16 @@ import java.util.List;
  * @date 2021/3/16 20:23
  */
 public class ParkingDaoImpl extends BaseDao implements ParkingDao {
+
     @Override
     public List<Parkinglists> queryParking() {
         String sql = "select * from parkinglists";
         return queryForList(Parkinglists.class , sql);
+    }
+
+    @Override
+    public Parkinglists queryParkingById(int id) {
+        String sql = "select * from parkinglists where id = ?";
+        return queryForOne(Parkinglists.class , sql , id);
     }
 }
