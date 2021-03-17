@@ -69,6 +69,21 @@ public class ServletUtils {
         return requestURL.delete(index+1 , requestURL.length())+"image/"+imageName;
     }
 
+    /**
+     * 为返回结果添加失败，成功提示
+     * @param jsonObject 要设置数据的对象
+     * @param isOk 是否成功
+     */
+    public static void isOk(JSONObject jsonObject , boolean isOk){
+        if (isOk){
+            jsonObject.put("msg" , "操作成功");
+            jsonObject.put("code" , "200");
+        }else {
+            jsonObject.put("msg" , "操作失败");
+            jsonObject.put("code" , "500");
+        }
+    }
+
 
 
 
