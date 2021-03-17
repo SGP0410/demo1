@@ -11,6 +11,10 @@ import java.util.List;
 
 public interface ParkreDao {
 
+    /**
+     *
+     * @return  获取停车记录
+     */
     public List<Parkrecordlist> queryParkre();
 
 }

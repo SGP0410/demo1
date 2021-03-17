@@ -13,6 +13,11 @@ import java.util.List;
  */
 public class Parkrecord_Base extends BaseDao implements ParkreDao {
 
+
+    /**
+     * 获取所有停车信息
+     * @return
+     */
     @Override
     public List<Parkrecordlist> queryParkre() {
         String sql = "select * from parkingtime";
