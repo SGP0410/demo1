@@ -11,8 +11,17 @@ import java.util.List;
 
 public interface HospitalListDao {
 
+    /**
+     * 查询所有医院的详细信息
+     * @return
+     */
     public List<HospitalList> queryHospitalList();
 
+    /**
+     * 通过医院编号查询医院详情
+     * @param hospitalId
+     * @return
+     */
     public HospitalList queryHospital(int hospitalId);
 
 }

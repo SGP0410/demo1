@@ -13,7 +13,7 @@ public class HospitalMedical {
     private String sex;
     private String birthday;
     private String adders;
-    private String userIdl;
+    private String userId;
 
     public HospitalMedical() {
     }
@@ -26,7 +26,7 @@ public class HospitalMedical {
         this.sex = sex;
         this.birthday = birthday;
         this.adders = adders;
-        this.userIdl = userIdl;
+        this.userId = userIdl;
     }
 
     @Override
@@ -39,7 +39,7 @@ public class HospitalMedical {
                 ", sex='" + sex + '\'' +
                 ", birthday='" + birthday + '\'' +
                 ", adders='" + adders + '\'' +
-                ", userIdl='" + userIdl + '\'' +
+                ", userIdl='" + userId + '\'' +
                 '}';
     }
 
@@ -99,11 +99,11 @@ public class HospitalMedical {
         this.adders = adders;
     }
 
-    public String getUserIdl() {
-        return userIdl;
+    public String getUserId() {
+        return userId;
     }
 
-    public void setUserIdl(String userIdl) {
-        this.userIdl = userIdl;
+    public void setUserId(String userId) {
+        this.userId = userId;
     }
 }

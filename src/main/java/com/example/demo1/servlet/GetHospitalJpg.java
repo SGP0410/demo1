@@ -21,6 +21,7 @@ import java.util.List;
 
 /**
  * 通过医院编号查询医院轮播图
+ * {"hospitalId":"1"}
  */
 @WebServlet(name = "gethospitaljpg" , value = "/gethospitaljpg")
 public class GetHospitalJpg extends HttpServlet {

@@ -18,5 +18,12 @@ public class GetBusOrderDaoImpl extends BaseDao implements BusOrderDao {
         return queryForList(BusOrder.class,sql);
     }
 
+    @Override
+    public int setBusOrderDao(BusOrder order) {
+        String sql = "INSERT INTO getbusorder(start,end,userName,userTel,price,path,status,userId) VALUES (?,?,?,?,?,?,?,?)";
+        return update(sql,order.getStart(),order.getEnd(),order.getUserName(),order.getUserTel(),order.getPrice(),order.getPath(),
+                order.getStatus(),order.getUserId());
+    }
+
 
 }
