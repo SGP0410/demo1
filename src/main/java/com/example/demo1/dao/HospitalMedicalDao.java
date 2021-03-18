@@ -18,6 +18,11 @@ public interface HospitalMedicalDao {
      */
     public List<HospitalMedical> queryHospitalMedicalDaoid(int userid);
 
+    /**
+     * 提交预约单
+     * @param hospitalMedical
+     * @return
+     */
     public int querHospitalMedicalDaoset(HospitalMedical hospitalMedical);
 
 }

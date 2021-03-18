@@ -23,6 +23,11 @@ public class GetHospitalMedicalDaoImpl extends BaseDao implements HospitalMedica
         return queryForList(HospitalMedical.class,sql,userid);
     }
 
+    /**
+     * 提交预约单
+     * @param cal
+     * @return
+     */
     @Override
     public int querHospitalMedicalDaoset(HospitalMedical cal) {
         String sql = "INSERT INTO hospitalmedical(name,cardId,tel,sex,birthday,adders,userId) VALUES (?,?,?,?,?,?,?)";
