@@ -18,6 +18,11 @@ import java.util.List;
  * @author 关鑫
  * @date 2021/3/17 21:18 星期三
  */
+
+/**
+ * 查询所有定制班车的订单信息
+ */
+
 @WebServlet(name = "getbusOrder" ,value = "/getbusOrder")
 public class GetBusOrder extends HttpServlet {
 
@@ -43,7 +48,7 @@ public class GetBusOrder extends HttpServlet {
                 jsonArray.put(jsonObject1);
             }
             jsonObject.put("rows",jsonArray);
-        }else {
+        } else {
             ServletUtils.isOk(jsonObject,false);
         }
         resp.getWriter().write(jsonObject.toString());
@@ -60,7 +65,6 @@ public class GetBusOrder extends HttpServlet {
         jsonObject1.put("path",bus.getPath());
         jsonObject1.put("start",bus.getStart());
         jsonObject1.put("userid",bus.getUserId());
-
     }
 
 }

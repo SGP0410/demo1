@@ -1,7 +1,8 @@
 package com.example.demo1.servlet;
 
-import com.example.demo1.dao.impl.GetBusListDaoImpl;
-import com.example.demo1.pojo.BusList;
+import com.example.demo1.dao.impl.GetHospitalDaoImpl;
+import com.example.demo1.dao.impl.GetHospitalListDaoImpl;
+import com.example.demo1.pojo.HospitalList;
 import com.example.demo1.utils.ServletUtils;
 import org.json.JSONObject;
 
@@ -13,15 +14,14 @@ import java.io.IOException;
 
 /**
  * @author 关鑫
- * @date 2021/3/17 16:51 星期三
+ * @date 2021/3/18 9:32 星期四
  */
 
 /**
- * 通过id获取巴士的基本信息
- * {"number":"1"}
+ * 根据id查询医院详情
  */
-@WebServlet(name = "getbusid",value = "/getbusid")
-public class GetBusId extends GetBusList{
+@WebServlet(name = "gethospitalId", value = "/gethospitalId")
+public class GetHospitalId extends GetHospitalList {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -29,18 +29,15 @@ public class GetBusId extends GetBusList{
 
         JSONObject jsonObject = ServletUtils.getJSONObject(req);
 
-        BusList bus = new GetBusListDaoImpl().queryBusid(jsonObject.getInt("number"));
-
+        HospitalList list = new GetHospitalListDaoImpl().queryHospital(jsonObject.getInt("hospitalId"));
         JSONObject jsonObject1 = new JSONObject();
-
-        if (bus != null){
+        if (list != null){
             ServletUtils.isOk(jsonObject1,true);
-            myDoGet(jsonObject1,bus);
+            myDoGet(jsonObject1,list);
         }else {
             ServletUtils.isOk(jsonObject1,false);
         }
         resp.getWriter().write(jsonObject1.toString());
-
     }
 
     @Override
