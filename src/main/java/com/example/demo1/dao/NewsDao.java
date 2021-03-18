@@ -1,5 +1,6 @@
 package com.example.demo1.dao;
 
+import com.example.demo1.pojo.Comment;
 import com.example.demo1.pojo.News;
 import com.example.demo1.pojo.NewsCategory;
 
@@ -36,4 +37,20 @@ public interface NewsDao {
      * @return 返回List<News>
      */
     public List<News> queryNewsAll();
+
+    /**
+     * 根据新闻编号查询评论
+     * @return 返回所有评论
+     */
+    public List<Comment> queryComment(int pressId);
+
+    /**
+     * 添加评论
+     * @param userId 用户id
+     * @param pressId 新闻id
+     * @param content 评论内容
+     * @param createTime 评论时间
+     * @return 返回值不为-1则添加成功
+     */
+    public int addComment(int userId , int pressId , String content , String createTime);
 }
