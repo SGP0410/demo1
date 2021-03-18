@@ -14,13 +14,24 @@ import java.util.List;
 
 public class IllegalDaoImpl extends BaseDao implements IllegalDao {
 
+    /**
+     *
+     * @param licencePlate  车牌
+     * @param engineNumber  发动机号
+     * @param catType       小型车
+     * @return
+     */
     @Override
     public List<Illegal> queryIllegalcph_fdj_type(String licencePlate, int engineNumber, String catType) {
         String sql = "select * from illegal where licencePlate = ? and engineNumber = ? and catType = ?";
         return queryForList(Illegal.class,sql,licencePlate,engineNumber,catType);
     }
 
-
+    /**
+     *
+     * @param id  违章编号
+     * @return
+     */
     public Illegal queryIllegalid(int id) {
         String sql = "select * from illegal where id = ?";
         return queryForOne(Illegal.class,sql,id);

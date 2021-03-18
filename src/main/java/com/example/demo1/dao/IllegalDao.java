@@ -21,6 +21,10 @@ public interface IllegalDao {
     public List<Illegal> queryIllegalcph_fdj_type(String licencePlate, int engineNumber, String catType);
 
 
+    /**
+     * @param id  违章编号
+     * @return
+     */
     public Illegal queryIllegalid(int id);
 
 }

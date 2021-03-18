@@ -36,14 +36,12 @@ public class Illegalid extends Illegallist {
             jsonObject1.put("msg","查询成功");
             jsonObject1.put("code","200");
             myDoGet(jsonObject1,illegals);
-        }else {
+        } else {
             jsonObject1.put("msg","查询失败");
             jsonObject1.put("code","500");
         }
 
         resp.getWriter().write(jsonObject1.toString());
-
-
 
 
     }

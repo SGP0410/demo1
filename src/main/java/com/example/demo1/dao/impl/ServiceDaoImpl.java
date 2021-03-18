@@ -10,6 +10,7 @@ import java.util.List;
  * @date 2021/3/16 19:31
  */
 public class ServiceDaoImpl extends BaseDao implements ServiceDao {
+
     @Override
     public List<Service> queryRecommendService() {
         String sql = "select * from service where isRecommend = ?";
