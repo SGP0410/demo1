@@ -16,7 +16,7 @@ import java.io.IOException;
 import java.util.List;
 
 @WebServlet(name = "getServiceType", value = "/getServiceType")
-public class getServiceType extends HttpServlet {
+public class GetServiceType extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         ServletUtils.Setting(request, response);

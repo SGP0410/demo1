@@ -15,7 +15,7 @@ import java.io.IOException;
 import java.util.List;
 
 @WebServlet(name = "getServiceAll", value = "/getServiceAll")
-public class GetServiceAll extends getServiceByIsRecommend {
+public class GetServiceAll extends GetServiceByIsRecommend {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         ServletUtils.Setting(request, response);

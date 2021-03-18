@@ -18,6 +18,11 @@ import java.util.Date;
 public class SetComment extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        doGet(request, response);
+    }
+
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         ServletUtils.Setting(request, response);
         JSONObject jsonObject = ServletUtils.getJSONObject(request);
         int comment = new NewsDaoImpl().addComment(
@@ -29,10 +34,5 @@ public class SetComment extends HttpServlet {
         JSONObject jsonObject1 = new JSONObject();
         ServletUtils.isOk(jsonObject1 , comment != -1);
         response.getWriter().write(jsonObject1.toString());
-    }
-
-    @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        doPost(request, response);
     }
 }

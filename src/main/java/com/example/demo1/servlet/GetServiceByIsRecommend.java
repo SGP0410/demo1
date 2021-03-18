@@ -19,7 +19,7 @@ import java.util.List;
  * 获取推荐服务，从service表中获取数据
  */
 @WebServlet(name = "getServiceByIsRecommend", value = "/getServiceByIsRecommend")
-public class getServiceByIsRecommend extends HttpServlet {
+public class GetServiceByIsRecommend extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         ServletUtils.Setting(request, response);
