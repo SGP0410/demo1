@@ -30,4 +30,10 @@ public class UserDaoImpl extends BaseDao implements UserDao {
                 user.getAvatar(),
                 user.getIdCard());
     }
+
+    @Override
+    public User queryUserByUserId(int id) {
+        String sql = "select * from user where id = ?";
+        return queryForOne(User.class , sql , id);
+    }
 }

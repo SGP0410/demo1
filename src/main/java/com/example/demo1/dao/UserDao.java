@@ -23,4 +23,11 @@ public interface UserDao {
      * @return
      */
     public int saveUser(User user);
+
+    /**
+     * 根据用户Id查询用户信息
+     * @param id
+     * @return
+     */
+    public User queryUserByUserId(int id);
 }

@@ -1,6 +1,7 @@
 package com.example.demo1.dao.impl;
 
 import com.example.demo1.dao.NewsDao;
+import com.example.demo1.pojo.Comment;
 import com.example.demo1.pojo.News;
 import com.example.demo1.pojo.NewsCategory;
 
@@ -33,5 +34,17 @@ public class NewsDaoImpl extends BaseDao implements NewsDao {
     public List<News> queryNewsAll() {
         String sql = "select * from news";
         return queryForList(News.class , sql);
+    }
+
+    @Override
+    public List<Comment> queryComment(int pressId) {
+        String sql = "select * from comment where pressId = ?";
+        return queryForList(Comment.class , sql , pressId);
+    }
+
+    @Override
+    public int addComment(int userId, int pressId, String content , String createTime) {
+        String sql = "insert into comment(userId , pressId , content , createTime) value(?,?,?,?)";
+        return update(sql , userId , pressId , content , createTime);
     }
 }

@@ -19,15 +19,20 @@ import java.util.List;
  * 获取推荐服务，从service表中获取数据
  */
 @WebServlet(name = "getServiceByIsRecommend", value = "/getServiceByIsRecommend")
-public class getServiceByIsRecommend extends HttpServlet {
+public class GetServiceByIsRecommend extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         ServletUtils.Setting(request, response);
-        JSONObject jsonObject = ServletUtils.getJSONObject(request);
 
         List<Service> serviceList = new ServiceDaoImpl().queryRecommendService();
 
         JSONObject jsonObject1 = new JSONObject();
+        myDoGet(jsonObject1 , serviceList ,request);
+        response.getWriter().write(jsonObject1.toString());
+
+    }
+
+    protected void myDoGet(JSONObject jsonObject1 , List<Service> serviceList , HttpServletRequest request){
         if (serviceList != null){
             jsonObject1.put("total" , serviceList.size());
             JSONArray jsonArray = new JSONArray();
@@ -44,14 +49,10 @@ public class getServiceByIsRecommend extends HttpServlet {
                 jsonArray.put(jsonObject2);
             }
             jsonObject1.put("rows" , jsonArray);
-            jsonObject1.put("code" , 200);
-            jsonObject1.put("msg" , "查询成功");
+            ServletUtils.isOk(jsonObject1 , true);
         }else {
-            jsonObject1.put("code" , 500);
-            jsonObject1.put("msg" , "查询失败");
+            ServletUtils.isOk(jsonObject1 , false);
         }
-        response.getWriter().write(jsonObject1.toString());
-
     }
 
     @Override
