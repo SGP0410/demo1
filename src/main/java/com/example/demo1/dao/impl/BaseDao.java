@@ -11,7 +11,7 @@ import java.sql.SQLException;
 import java.util.List;
 
 public class BaseDao {
-    private QueryRunner queryRunner = new QueryRunner();
+    private final QueryRunner queryRunner = new QueryRunner();
 
     /**
      *update()方法用来执行update、insert、delete语句

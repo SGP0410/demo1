@@ -7,7 +7,7 @@ package com.example.demo1.pojo;
 public class PaymentDetail {
     private int id;
     private String chargeUnit;
-    private String typeName;
+    private int typeName;
     private String doorNo;
     private int userId;
     private int classifyId;
@@ -30,11 +30,11 @@ public class PaymentDetail {
         this.chargeUnit = chargeUnit;
     }
 
-    public String getTypeName() {
+    public int getTypeName() {
         return typeName;
     }
 
-    public void setTypeName(String typeName) {
+    public void setTypeName(int typeName) {
         this.typeName = typeName;
     }
 
