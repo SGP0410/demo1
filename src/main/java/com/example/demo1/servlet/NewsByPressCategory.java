@@ -43,8 +43,12 @@ public class NewsByPressCategory extends HttpServlet {
                 jsonObject2.put("title" , n.getTitle());
                 jsonObject2.put("content" , n.getContent());
                 jsonObject2.put("imgUrl" , ServletUtils.getImageUrl(request , n.getImgUrl()));
-                jsonObject2.put("pressCategory" , newsDao
-                        .queryNewsCategoryByPressCategory(n.getPressCategory()).getCategoryName());
+                if (n.getPressCategory() == null || n.getPressCategory().equals("")){
+                    jsonObject2.put("pressCategory" , "");
+                }else {
+                    jsonObject2.put("pressCategory" , newsDao
+                            .queryNewsCategoryByPressCategory(n.getPressCategory()).getCategoryName());
+                }
                 jsonObject2.put("isRecommend" , n.getIsRecommend());
                 jsonObject2.put("likeNumber" , n.getLikeNumber());
                 jsonObject2.put("viewsNumber" , n.getViewsNumber());

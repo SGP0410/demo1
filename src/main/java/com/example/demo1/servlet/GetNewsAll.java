@@ -1,4 +1,5 @@
-package com.example.demo1.servlet; /**
+package com.example.demo1.servlet;
+/**
  * @author 孙国鹏
  * @date 2021/3/17 10:51
  */
@@ -21,7 +22,6 @@ public class GetNewsAll extends NewsByPressCategory {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         ServletUtils.Setting(request, response);
-
         NewsDaoImpl newsDao = new NewsDaoImpl();
         List<News> newsList = newsDao.queryNewsAll();
         myDoGet(request , response , newsList , newsDao);
