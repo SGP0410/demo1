@@ -11,7 +11,7 @@ public class User {
     private String avatar;
     private String idCard;
 
-    public User(String userName, String password, String nickName, String phonenumber, int sex, String email, String avatar, String idCard) {
+    public User(int id , String userName, String password, String nickName, String phonenumber, int sex, String email, String avatar, String idCard) {
         this.userName = userName;
         this.password = password;
         this.nickName = nickName;
@@ -20,6 +20,7 @@ public class User {
         this.email = email;
         this.avatar = avatar;
         this.idCard = idCard;
+        this.id = id;
     }
 
     public User() {

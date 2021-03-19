@@ -1,6 +1,7 @@
 package com.example.demo1.dao.impl;
 
 import com.example.demo1.dao.UserDao;
+import com.example.demo1.pojo.Sex;
 import com.example.demo1.pojo.User;
 
 public class UserDaoImpl extends BaseDao implements UserDao {
@@ -35,5 +36,27 @@ public class UserDaoImpl extends BaseDao implements UserDao {
     public User queryUserByUserId(int id) {
         String sql = "select * from user where id = ?";
         return queryForOne(User.class , sql , id);
+    }
+
+    @Override
+    public Sex querySexBySexId(int sexId) {
+        String sql = "select * from sex where sexId = ?";
+        return queryForOne(Sex.class , sql , sexId);
+    }
+
+    @Override
+    public int updateUser(User user) {
+        System.out.println(user.toString());
+        String sql = "update user set idCard = ?,userName = ?,nickName = ?,email = ?,phonenumber =?," +
+                "sex = ?,avatar = ? where id = ?";
+        System.out.println(user.toString());
+        return update(sql , user.getIdCard() , user.getUserName() , user.getNickName() ,
+                user.getEmail() , user.getPhonenumber() , user.getSex() , user.getAvatar() , user.getId());
+    }
+
+    @Override
+    public int updatePassword(int id, String userName, String password) {
+        String sql = "update user set password = ? where id = ? and userName = ?";
+        return update(sql , password , id , userName);
     }
 }

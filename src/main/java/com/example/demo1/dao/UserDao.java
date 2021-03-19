@@ -1,5 +1,6 @@
 package com.example.demo1.dao;
 
+import com.example.demo1.pojo.Sex;
 import com.example.demo1.pojo.User;
 
 public interface UserDao {
@@ -30,4 +31,27 @@ public interface UserDao {
      * @return
      */
     public User queryUserByUserId(int id);
+
+    /**
+     * 根据sexId获取Sex
+     * @param sexId
+     * @return
+     */
+    public Sex querySexBySexId(int sexId);
+
+    /**
+     * 修改用户信息
+     * @param user
+     * @return
+     */
+    public int updateUser(User user);
+
+    /**
+     * 修改用户密码
+     * @param id 用户id
+     * @param userName 用户名
+     * @param password 用户密码
+     * @return
+     */
+    public int updatePassword(int id , String userName , String password);
 }
