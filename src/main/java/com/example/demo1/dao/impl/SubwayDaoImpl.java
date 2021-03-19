@@ -11,6 +11,7 @@ import java.util.List;
  * @date 2021/3/18 9:33
  */
 public class SubwayDaoImpl extends BaseDao implements SubwayDao {
+
     @Override
     public SubwayDetails querySubwayDetailsByLineId(int lineId) {
         String sql = "select * from subwayDetails where lineId = ?";

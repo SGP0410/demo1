@@ -21,8 +21,8 @@ import java.util.List;
 
 /**
  * 通过用户id查询就诊人信息
+ * {"userId":"1"}
  */
-
 @WebServlet(name = "gethospitalmedical" ,value = "/gethospitalmedical")
 public class GetHospitalMedical extends HttpServlet {
 
@@ -75,7 +75,7 @@ public class GetHospitalMedical extends HttpServlet {
         jsonObject1.put("sex",medical.getBirthday());
         jsonObject1.put("birthday",medical.getBirthday());
         jsonObject1.put("adders",medical.getAdders());
-        jsonObject1.put("userId",medical.getUserIdl());
+        jsonObject1.put("userId",medical.getUserId());
 
     }
 }

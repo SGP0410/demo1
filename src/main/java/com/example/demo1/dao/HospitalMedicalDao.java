@@ -11,6 +11,18 @@ import java.util.List;
 
 public interface HospitalMedicalDao {
 
+    /**
+     * 通过用户id 查询就诊人信息
+     * @param userid
+     * @return
+     */
     public List<HospitalMedical> queryHospitalMedicalDaoid(int userid);
+
+    /**
+     * 提交预约单
+     * @param hospitalMedical
+     * @return
+     */
+    public int querHospitalMedicalDaoset(HospitalMedical hospitalMedical);
 
 }

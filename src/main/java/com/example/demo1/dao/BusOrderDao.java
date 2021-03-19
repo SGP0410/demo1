@@ -18,4 +18,7 @@ public interface BusOrderDao {
      */
     public List<BusOrder> queryBusOrderDao();
 
+    public int setBusOrderDao(BusOrder order);
+
+
 }

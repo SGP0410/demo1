@@ -1,9 +1,5 @@
 package com.example.demo1.utils;
 
-
-
-
-
 import org.json.JSONObject;
 
 import javax.servlet.http.*;

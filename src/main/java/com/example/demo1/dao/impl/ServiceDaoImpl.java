@@ -28,4 +28,6 @@ public class ServiceDaoImpl extends BaseDao implements ServiceDao {
         String sql = "select * from serviceType";
         return queryForList(ServiceType.class , sql);
     }
+
+
 }

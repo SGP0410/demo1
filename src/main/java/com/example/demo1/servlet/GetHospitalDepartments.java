@@ -1,11 +1,10 @@
 package com.example.demo1.servlet;
 
-import com.example.demo1.dao.impl.GetHospitalDaoImpl;
-import com.example.demo1.pojo.HospitalJpg;
+import com.example.demo1.dao.impl.HospitalDepartmentsDaoImpl;
+import com.example.demo1.pojo.HospitalDepartments;
 import com.example.demo1.utils.ServletUtils;
 import org.json.JSONArray;
 import org.json.JSONObject;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -16,33 +15,25 @@ import java.util.List;
 
 /**
  * @author 关鑫
- * @date 2021/3/18 8:20 星期四
+ * @date 2021/3/18 17:04 星期四
  */
-
-/**
- * 通过医院编号查询医院轮播图
- * {"hospitalId":"1"}
- */
-@WebServlet(name = "gethospitaljpg" , value = "/gethospitaljpg")
-public class GetHospitalJpg extends HttpServlet {
-
+@WebServlet(name = "gethospitaldepartments" ,value = "/gethospitaldepartments")
+public class GetHospitalDepartments extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         ServletUtils.Setting(req,resp);
 
-
-        JSONObject jsonObject2 = ServletUtils.getJSONObject(req);
-        List<HospitalJpg> hospitalJpgs = new GetHospitalDaoImpl().queryHospitalList(jsonObject2.getInt("hospitalId"));
+        List<HospitalDepartments> list = new HospitalDepartmentsDaoImpl().queryHospitalDepartments();
 
         JSONObject jsonObject = new JSONObject();
-        if (hospitalJpgs!=null){
+        if (list != null){
             ServletUtils.isOk(jsonObject,true);
-            jsonObject.put("rotal",hospitalJpgs.size());
+            jsonObject.put("total",list.size());
             JSONArray jsonArray = new JSONArray();
-            for (HospitalJpg jpg : hospitalJpgs){
+            for (HospitalDepartments lists : list){
                 JSONObject jsonObject1 = new JSONObject();
-                myDoGet(jsonObject1,jpg);
+                myDoGet(jsonObject1,lists);
                 jsonArray.put(jsonObject1);
             }
             jsonObject.put("rows",jsonArray);
@@ -50,18 +41,17 @@ public class GetHospitalJpg extends HttpServlet {
             ServletUtils.isOk(jsonObject,false);
         }
         resp.getWriter().write(jsonObject.toString());
-
     }
 
-    protected void myDoGet(JSONObject jsonObject, HospitalJpg jpg){
-        jsonObject.put("imgUrl",jpg.getImgUrl());
-        jsonObject.put("hospitalId",jpg.getHospitalId());
+    protected void myDoGet(JSONObject jsonObject1, HospitalDepartments lists){
+        jsonObject1.put("id",lists.getId());
+        jsonObject1.put("did",lists.getDid());
+        jsonObject1.put("categoryName",lists.getCategoryName());
+        jsonObject1.put("money",lists.getMoney());
     }
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         super.doPost(req, resp);
     }
-
-
 }
