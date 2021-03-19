@@ -17,7 +17,7 @@ public interface PaymentDao {
      * @param userId
      * @return
      */
-    public List<PaymentDetail> queryPaymentDetailByUserId(int userId);
+    public List<PaymentDetail> queryPaymentDetailByUserIdAndClassifyId(int userId , int classifyId);
 
     /**
      * 根据typeName查询组别
@@ -26,6 +26,25 @@ public interface PaymentDao {
      */
     public Group queryGroupByTypeName(int typeName);
 
+    /**
+     * 获取所有组别
+     * @return
+     */
+    public List<Group> queryGroupAll();
+
+    /**
+     * 添加组别
+     * @param group
+     * @return
+     */
+    public int addGroup(Group group);
+
+    /**
+     * 删除组别
+     * @param group
+     * @return
+     */
+    public int deleteGroup(Group group);
 
     /**
      * 根据classifyId查询缴费类型
@@ -33,4 +52,11 @@ public interface PaymentDao {
      * @return
      */
     public CostType queryCostTypeByClassifyId(int classifyId);
+
+    /**
+     * 根据缴费类型查询缴费类型编号
+     * @param name
+     * @return
+     */
+    public CostType queryCostTypeByName(String name);
 }

@@ -13,9 +13,9 @@ import java.util.List;
  */
 public class PaymentDaoImpl extends BaseDao implements PaymentDao {
     @Override
-    public List<PaymentDetail> queryPaymentDetailByUserId(int userId) {
-        String sql = "select * from paymentDetail where userId = ?";
-        return queryForList(PaymentDetail.class , sql , userId);
+    public List<PaymentDetail> queryPaymentDetailByUserIdAndClassifyId(int userId , int classifyId) {
+        String sql = "select * from paymentDetail where userId = ? and classifyId = ?";
+        return queryForList(PaymentDetail.class , sql , userId , classifyId);
     }
 
     @Override
@@ -26,9 +26,33 @@ public class PaymentDaoImpl extends BaseDao implements PaymentDao {
     }
 
     @Override
+    public List<Group> queryGroupAll() {
+        String sql = "select * from `group`";
+        return queryForList(Group.class , sql);
+    }
+
+    @Override
+    public int addGroup(Group group) {
+        String sql = "insert into `group`(typeName , name) value(?,?)";
+        return update(sql , group.getTypeName() , group.getName());
+    }
+
+    @Override
+    public int deleteGroup(Group group) {
+        String sql = "delete from `group` where name = ?";
+        return update(sql , group.getName());
+    }
+
+
+    @Override
     public CostType queryCostTypeByClassifyId(int classifyId) {
-        System.out.println(classifyId);
         String sql = "select * from costType where classifyId = ?";
         return queryForOne(CostType.class , sql , classifyId);
+    }
+
+    @Override
+    public CostType queryCostTypeByName(String name) {
+        String sql = "select * from costType where name = ?";
+        return queryForOne(CostType.class , sql , name);
     }
 }

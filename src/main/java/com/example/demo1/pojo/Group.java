@@ -6,8 +6,16 @@ package com.example.demo1.pojo;
  */
 public class Group {
     private int id;
-    public  int typeName;
-    public  String name;
+    private   int typeName;
+    private   String name;
+
+    public Group() {
+    }
+
+    public Group(int typeName, String name) {
+        this.typeName = typeName;
+        this.name = name;
+    }
 
     public int getId() {
         return id;

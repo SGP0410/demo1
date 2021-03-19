@@ -15,7 +15,7 @@ import javax.servlet.annotation.*;
 import java.io.IOException;
 import java.util.List;
 
-@WebServlet(name = "getPaymentDetailByUserId", value = "/getPaymentDetailByUserId")
+@WebServlet(name = "getPaymentDetailByUserId", value = "/getPaymentDetailByUserIdAndClassifyId")
 public class GetPaymentDetailByUserId extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -23,11 +23,12 @@ public class GetPaymentDetailByUserId extends HttpServlet {
         JSONObject jsonObject = ServletUtils.getJSONObject(request);
         PaymentDaoImpl paymentDao = new PaymentDaoImpl();
         List<PaymentDetail> paymentDetailList = paymentDao
-                .queryPaymentDetailByUserId(jsonObject.optInt("userId"));
+                .queryPaymentDetailByUserIdAndClassifyId(jsonObject.optInt("userId") ,
+                        paymentDao.queryCostTypeByName(jsonObject.optString("classifyId")).getClassifyId());
         JSONObject jsonObject1 = new JSONObject();
         if (paymentDetailList != null){
             ServletUtils.isOk(jsonObject1 , true);
-            jsonObject1.put("total" , paymentDetailList);
+            jsonObject1.put("total" , paymentDetailList.size());
             JSONArray jsonArray = new JSONArray();
             for (PaymentDetail p:paymentDetailList) {
                 JSONObject jsonObject2 = new JSONObject();
