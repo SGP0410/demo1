@@ -17,6 +17,10 @@ import java.util.List;
  * @author 关鑫
  * @date 2021/3/18 17:04 星期四
  */
+
+/**
+ *  获取所有科室信息
+ */
 @WebServlet(name = "gethospitaldepartments" ,value = "/gethospitaldepartments")
 public class GetHospitalDepartments extends HttpServlet {
 

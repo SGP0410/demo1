@@ -18,6 +18,7 @@ import java.io.IOException;
  */
 
 /**
+ * 智慧巴士  提交巴士订单
  * {"start":"泰德大厦","end":"大连北站","userName":"张三","userTel":"12345611","price":"8","path":"一号线","status":"1","userId":"1"}
  */
 @WebServlet(name = "setbusorder",value = "/setbusorder")

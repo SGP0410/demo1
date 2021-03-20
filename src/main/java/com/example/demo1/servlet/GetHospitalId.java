@@ -18,7 +18,8 @@ import java.io.IOException;
  */
 
 /**
- * 根据id查询医院详情
+ * 根据 hospitalId查询医院详情
+ * {"hospitalId":"1"}
  */
 @WebServlet(name = "gethospitalId", value = "/gethospitalId")
 public class GetHospitalId extends GetHospitalList {
