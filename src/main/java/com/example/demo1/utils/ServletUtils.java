@@ -5,6 +5,7 @@ import org.json.JSONObject;
 import javax.servlet.http.*;
 import java.io.BufferedReader;
 import java.io.IOException;
+import java.util.Enumeration;
 
 public class ServletUtils {
 
@@ -33,11 +34,21 @@ public class ServletUtils {
      */
     public static JSONObject getJSONObject(HttpServletRequest request){
         BufferedReader reader = null;
+        JSONObject jsonObject;
         try {
             //解析接收的数据
             reader = request.getReader();
             String json = reader.readLine();
-            JSONObject jsonObject = new JSONObject(json);
+            if (json != null){
+                jsonObject = new JSONObject(json);
+            }else {
+                jsonObject = new JSONObject();
+                Enumeration<String> enumeration = request.getParameterNames();
+                while (enumeration.hasMoreElements()){
+                    String k = enumeration.nextElement();
+                    jsonObject.put(k , request.getParameter(k));
+                }
+            }
             return jsonObject;
         }catch (Exception e){
             e.printStackTrace();
@@ -62,7 +73,7 @@ public class ServletUtils {
         StringBuffer requestURL = request.getRequestURL();
         String servletPath = request.getServletPath();
         int index = requestURL.indexOf(servletPath);
-        return requestURL.delete(index+1 , requestURL.length())+"image/"+imageName;
+        return requestURL.delete(index+1 , requestURL.length())+"images/"+imageName;
     }
 
     /**
@@ -79,8 +90,4 @@ public class ServletUtils {
             jsonObject.put("code" , "500");
         }
     }
-
-
-
-
 }
