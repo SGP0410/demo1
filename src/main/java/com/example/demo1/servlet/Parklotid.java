@@ -7,11 +7,9 @@ import org.json.JSONObject;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.List;
 
 /**
  * @author 关鑫
@@ -35,7 +33,7 @@ public class Parklotid extends Parklotlist {
         if (parkinglists != null){
             jsonObject1.put("msg","查询成功");
             jsonObject1.put("code","200");
-            myDoGet(jsonObject1 , parkinglists);
+            myDoGet(jsonObject1 , parkinglists, request);
         }else {
             jsonObject1.put("msg","查询失败");
             jsonObject1.put("code","500");

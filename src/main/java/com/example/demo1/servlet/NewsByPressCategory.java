@@ -40,6 +40,7 @@ public class NewsByPressCategory extends HttpServlet {
                 jsonObject2.put("createTime" , n.getCreateTime());
                 jsonObject2.put("updateTime" , n.getUpdateTime());
                 jsonObject2.put("id" , n.getId());
+                jsonObject2.put("theme",n.getTheme());
                 jsonObject2.put("title" , n.getTitle());
                 jsonObject2.put("content" , n.getContent());
                 jsonObject2.put("imgUrl" , ServletUtils.getImageUrl(request , n.getImgUrl()));

@@ -40,7 +40,7 @@ public class GetHospitalList extends HttpServlet {
             JSONArray jsonArray = new JSONArray();
             for (HospitalList list : hospitalLists){
                 JSONObject jsonObject1 = new JSONObject();
-                myDoGet(jsonObject1,list);
+                myDoGet(jsonObject1,list,req);
                 jsonArray.put(jsonObject1);
             }
             jsonObject.put("rows",jsonArray);
@@ -50,7 +50,7 @@ public class GetHospitalList extends HttpServlet {
         resp.getWriter().write(jsonObject.toString());
     }
 
-    protected void myDoGet(JSONObject jsonObject1, HospitalList list){
+    protected void myDoGet(JSONObject jsonObject1, HospitalList list, HttpServletRequest req){
         /**
          * id
          * hospitalId
@@ -64,7 +64,7 @@ public class GetHospitalList extends HttpServlet {
         jsonObject1.put("hospitalName",list.getHospitalName());
         jsonObject1.put("brief",list.getBrief());
         jsonObject1.put("level",list.getLevel());
-        jsonObject1.put("imgUrl",list.getImgUrl());
+        jsonObject1.put("imgUrl",ServletUtils.getImageUrl(req,list.getImgUrl()));
 
     }
 

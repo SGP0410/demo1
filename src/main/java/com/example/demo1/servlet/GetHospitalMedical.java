@@ -71,8 +71,8 @@ public class GetHospitalMedical extends HttpServlet {
         jsonObject1.put("id",medical.getId());
         jsonObject1.put("name",medical.getName());
         jsonObject1.put("cardId",medical.getCardId());
-        jsonObject1.put("tel",medical.getSex());
-        jsonObject1.put("sex",medical.getBirthday());
+        jsonObject1.put("tel",medical.getTel());
+        jsonObject1.put("sex",medical.getSex());
         jsonObject1.put("birthday",medical.getBirthday());
         jsonObject1.put("adders",medical.getAdders());
         jsonObject1.put("userId",medical.getUserId());

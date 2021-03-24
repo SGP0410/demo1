@@ -42,7 +42,7 @@ public class GetHospitalJpg extends HttpServlet {
             JSONArray jsonArray = new JSONArray();
             for (HospitalJpg jpg : hospitalJpgs){
                 JSONObject jsonObject1 = new JSONObject();
-                myDoGet(jsonObject1,jpg);
+                myDoGet(jsonObject1,jpg,req);
                 jsonArray.put(jsonObject1);
             }
             jsonObject.put("rows",jsonArray);
@@ -53,8 +53,8 @@ public class GetHospitalJpg extends HttpServlet {
 
     }
 
-    protected void myDoGet(JSONObject jsonObject, HospitalJpg jpg){
-        jsonObject.put("imgUrl",jpg.getImgUrl());
+    protected void myDoGet(JSONObject jsonObject, HospitalJpg jpg, HttpServletRequest req){
+        jsonObject.put("imgUrl",ServletUtils.getImageUrl(req,jpg.getImgUrl()));
         jsonObject.put("hospitalId",jpg.getHospitalId());
     }
 

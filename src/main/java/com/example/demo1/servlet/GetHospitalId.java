@@ -1,6 +1,5 @@
 package com.example.demo1.servlet;
 
-import com.example.demo1.dao.impl.GetHospitalDaoImpl;
 import com.example.demo1.dao.impl.GetHospitalListDaoImpl;
 import com.example.demo1.pojo.HospitalList;
 import com.example.demo1.utils.ServletUtils;
@@ -34,7 +33,7 @@ public class GetHospitalId extends GetHospitalList {
         JSONObject jsonObject1 = new JSONObject();
         if (list != null){
             ServletUtils.isOk(jsonObject1,true);
-            myDoGet(jsonObject1,list);
+            myDoGet(jsonObject1,list, req);
         }else {
             ServletUtils.isOk(jsonObject1,false);
         }

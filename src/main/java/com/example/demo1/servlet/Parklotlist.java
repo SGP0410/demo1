@@ -1,6 +1,5 @@
 package com.example.demo1.servlet;
 
-import com.example.demo1.dao.impl.BaseDao;
 import com.example.demo1.dao.impl.ParkingDaoImpl;
 import com.example.demo1.pojo.Parkinglists;
 import com.example.demo1.utils.ServletUtils;
@@ -13,7 +12,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.List;
 
 /**
@@ -44,7 +42,7 @@ public class Parklotlist extends HttpServlet {
             JSONArray jsonArray = new JSONArray();
             for (Parkinglists list : lists){
                 JSONObject jsonObject1 = new JSONObject();
-                myDoGet(jsonObject1 , list);
+                myDoGet(jsonObject1 , list,request);
                 jsonArray.put(jsonObject1);
             }
             jsonObject.put("rows",jsonArray);
@@ -55,12 +53,12 @@ public class Parklotlist extends HttpServlet {
         response.getWriter().write(jsonObject.toString());
     }
 
-    protected void myDoGet(JSONObject jsonObject1  , Parkinglists parkinglists){
+    protected void myDoGet(JSONObject jsonObject1, Parkinglists parkinglists, HttpServletRequest request){
         jsonObject1.put("id",parkinglists.getId());
         jsonObject1.put("parkName",parkinglists.getParkingName());
         jsonObject1.put("vacancy",parkinglists.getVacancy());
         jsonObject1.put("priceCaps",parkinglists.getPriceCaps());
-        jsonObject1.put("imgUrl",parkinglists.getImgUrl());
+        jsonObject1.put("imgUrl",ServletUtils.getImageUrl(request,parkinglists.getImgUrl()));
         jsonObject1.put("rates",parkinglists.getRates());
         jsonObject1.put("address",parkinglists.getAddress());
         jsonObject1.put("distance",parkinglists.getDistance());

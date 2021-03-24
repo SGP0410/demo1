@@ -37,6 +37,7 @@ public class LogIn extends HttpServlet {
         if (user != null){
             jsonObject1.put("msg" , "操作成功");
             jsonObject1.put("code" , "200");
+            jsonObject1.put("id",user.getId());
             ToKen.createToken();
             jsonObject1.put("token" , ToKen.getToKen());
         }else {
