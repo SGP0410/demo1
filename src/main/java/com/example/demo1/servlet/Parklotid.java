@@ -33,7 +33,7 @@ public class Parklotid extends Parklotlist {
         if (parkinglists != null){
             jsonObject1.put("msg","查询成功");
             jsonObject1.put("code","200");
-            myDoGet(jsonObject1 , parkinglists, request);
+            myDoGet(jsonObject1 , parkinglists, req);
         }else {
             jsonObject1.put("msg","查询失败");
             jsonObject1.put("code","500");

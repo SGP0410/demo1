@@ -1,5 +1,6 @@
 package com.example.demo1.dao;
 
+import com.example.demo1.pojo.Doctor;
 import com.example.demo1.pojo.HospitalDepartments;
 
 import java.util.List;
@@ -16,5 +17,8 @@ public interface HospitalDepartmentsDao {
      * @return
      */
     public List<HospitalDepartments> queryHospitalDepartments();
+
+
+    public List<Doctor> queryDoctor();
 
 }

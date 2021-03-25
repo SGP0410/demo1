@@ -1,6 +1,7 @@
 package com.example.demo1.dao.impl;
 
 import com.example.demo1.dao.HospitalDepartmentsDao;
+import com.example.demo1.pojo.Doctor;
 import com.example.demo1.pojo.HospitalDepartments;
 
 import java.util.List;
@@ -21,4 +22,11 @@ public class HospitalDepartmentsDaoImpl extends BaseDao implements HospitalDepar
         String sql = "select * from hospitaldepartments";
         return queryForList(HospitalDepartments.class,sql);
     }
+
+    @Override
+    public List<Doctor> queryDoctor() {
+        String sql = "select * from hospitadoctor";
+        return queryForList(Doctor.class,sql);
+    }
+
 }
