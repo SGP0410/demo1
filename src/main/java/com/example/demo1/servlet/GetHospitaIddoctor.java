@@ -20,6 +20,9 @@ import java.util.List;
  * @date 2021/3/25 8:58 星期四
  */
 
+/**
+ * 获取医生
+ */
 @WebServlet(name = "getdoctor",value = "/getdoctor")
 public class GetHospitaIddoctor extends HttpServlet {
 
